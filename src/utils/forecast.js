@@ -10,7 +10,10 @@ const foreCast = (latiitude, longitude, callback) => {
         } else if (body.error) {
             console.log('Unable to find location', undefined);
         } else {
-            callback(undefined, `${body.current.weather_descriptions[0]}. It is currently ${body.current.temperature} degress out. It feels like ${body.current.feelslike} degress out.`);
+            callback(undefined, {
+                forecastSummary: `${body.current.weather_descriptions[0]}. It is currently ${body.current.temperature} degress out. It feels like ${body.current.feelslike} degress out. Humidity is ${body.current.humidity}%`,
+                forecastIcon: `${body.current.weather_icons[0]}`
+            });
         }
     });
 }

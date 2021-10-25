@@ -60,9 +60,10 @@ app.get('/weather', (req, res) => {
                 return res.send({error});
             }
             res.send({
-                forecast: foreCastData,
+                forecast: foreCastData.forecastSummary,
                 location,
-                address: address
+                address: address,
+                forecastIcon : foreCastData.forecastIcon
             });
         });
         
